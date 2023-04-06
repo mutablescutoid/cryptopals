@@ -8,9 +8,9 @@ fn read_from_stdin() -> Vec<u8> {
     io::stdin().read_to_end(&mut stdin).unwrap();
 
     let last_byte = stdin[stdin.len() - 1];
-    if last_byte == LF { 
+    if last_byte == LF {
         stdin.pop();
     }
-  
+
     stdin
 }
