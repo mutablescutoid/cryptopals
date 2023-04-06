@@ -2,8 +2,8 @@
 
 //}
 
-pub trait String {
+pub trait StringManipulation {
     fn hamming_distance(&self, bytes: &Vec<u8>) -> usize;
 
-    fn from_bytes()
+    fn from_bytes() -> String;
 }
