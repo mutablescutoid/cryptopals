@@ -54,13 +54,10 @@ impl Xor for Vec<u8> {
     }
 
     fn find_single_byte_key(&self) -> u8 {
-        let mut weighted_keys = HashMap::new();
-
         let mut max_score = 0;
         let mut max_key = 0;
         for key in 0..=u8::MAX {
             let score = Self::plaintext_score(&self.single_byte_xor(key));
-            weighted_keys.insert(key, score);
             if score > max_score {
                 max_score = score;
                 max_key = key;
@@ -71,7 +68,7 @@ impl Xor for Vec<u8> {
     }
 
     fn plaintext_score(&self) -> usize {
-        let mut count = 0;
+        /*let mut count = 0;
 
         for plaintext_byte in self {
             if *plaintext_byte >= Self::LOWEST_ASCII as u8
@@ -81,7 +78,10 @@ impl Xor for Vec<u8> {
             }
         }
 
-        count
+        count*/
+
+        self.clone.fold(0, |acc, x| if *x >= Self::LOWEST_ASCII as u8
+                && *x <= Self::HIGHEST_ASCII as u8 {1} else {0})
     }
 
     fn repeating_key_xor(&self, key: &Vec<u8>) -> Vec<u8> {
@@ -98,11 +98,7 @@ impl Xor for Vec<u8> {
         self.clone()
             .into_iter()
             .map(|x| {
-                let mut y = 0x00;
-                for key_byte in key {
-                    y = x ^ key_byte;
-                }
-                y
+                key.clone().fold(|y| y ^ x)
             })
             .collect()
     }

@@ -51,9 +51,11 @@ pub trait Hex {
     const WRONG_DIGIT_AMOUNT: &'static str = "Wrong amount of digits for a hexadecimal string";
     const NON_HEXADECIMAL_DIGIT: &'static str = "Non-hexadecimal digit found";
 
-    fn to_bytes(&self) -> Result<Vec<u8>, &'static str>;
-
     fn to_hex(&self) -> String;
+  
+    fn from_hex(&self) -> Result<Vec<u8>, &'static str>;
+
+    fn is_hex(&self) -> bool;
 }
 
 impl Hex for Vec<u8> {
