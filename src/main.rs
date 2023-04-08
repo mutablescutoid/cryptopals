@@ -1,8 +1,7 @@
 mod cli;
 mod crypto;
 
-use crypto::base64::Base64;
-use crypto::hex::Hex;
+use crypto::bytes_ext::BytesExt;
 
 fn main() {
     /*let stdin = stdio::read_from_stdin().iter().map(|x| *x as char).collect();
@@ -19,6 +18,6 @@ fn main() {
     //println!("{}", hex::bytes_to_hex(&xor::fixed_xor(&str_one, &str_two).unwrap()));
     println!("{}", str_one.to_base64())*/
 
-    assert_eq!(String::from("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d").into_bytes().to_bytes().unwrap().to_base64(),
+    assert_eq!(Vec::from_hex(String::from("49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d")).to_base64(),
             String::from("SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"));
 }
