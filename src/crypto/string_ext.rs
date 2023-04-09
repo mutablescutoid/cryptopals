@@ -5,7 +5,7 @@ pub trait StringExt {
 
     fn is_hex(&self) -> bool;
 
-    fn hamming_distance(&self, string: &Vec<u8>) -> usize;
+    fn hamming_distance(&self, string: &String) -> usize;
 }
 
 impl StringExt for String {
@@ -18,7 +18,17 @@ impl StringExt for String {
         self.chars().all(|x| HashSet::from(HEX_TABLE).contains(&x)) && self.len() % 2 == 0
     }
 
-    fn hamming_distance(&self, string: &Vec<u8>) -> usize {
-        0
+    fn hamming_distance(&self, string: &String) -> usize {
+        let mut string_iter = string.as_bytes().iter();
+
+        self.as_bytes()
+            .iter()
+            .map(|x| {
+                let xor = x ^ string_iter.next().unwrap();
+                (0..=7)
+                    .into_iter()
+                    .fold(0, |acc, y| acc + (xor << y >> 7) as usize)
+            })
+            .sum()
     }
 }

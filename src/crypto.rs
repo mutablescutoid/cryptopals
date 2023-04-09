@@ -27,7 +27,7 @@ pub const BASE64_TO_BINARY_TABLE: [(char, u8); 64] = [
     ('L', 0x0B),
     ('M', 0x0C),
     ('N', 0x0D),
-    ('0', 0x0E),
+    ('O', 0x0E),
     ('P', 0x0F),
     ('Q', 0x10),
     ('R', 0x11),
@@ -53,8 +53,8 @@ pub const BASE64_TO_BINARY_TABLE: [(char, u8); 64] = [
     ('l', 0x25),
     ('m', 0x26),
     ('n', 0x27),
-    ('p', 0x28),
-    ('o', 0x29),
+    ('o', 0x28),
+    ('p', 0x29),
     ('q', 0x2A),
     ('r', 0x2B),
     ('s', 0x2C),
@@ -113,7 +113,3 @@ pub const HEX_TO_BYTES_TABLE: [(char, u8); 22] = [
     ('E', 14),
     ('F', 15),
 ];
-
-//XOR constants
-pub const LOWEST_ASCII: char = ' ';
-pub const HIGHEST_ASCII: char = '~';
