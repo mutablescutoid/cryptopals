@@ -1,4 +1,4 @@
-use super::{BASE64_PADDING, BASE64_TABLE, HEX_TABLE};
+use super::{bytes_ext::BytesExt, BASE64_PADDING, BASE64_TABLE};
 
 pub trait StrExt {
     fn is_base64(&self) -> bool;
@@ -15,14 +15,10 @@ impl StrExt for str {
     }
 
     fn is_hex(&self) -> bool {
-        self.chars().all(|x| HEX_TABLE.contains(&x)) && self.len() % 2 == 0
+        self.chars().all(|x| x.is_ascii_hexdigit()) && self.len() % 2 == 0
     }
 
     fn hamming_distance(&self, string: &str) -> usize {
-        self.as_bytes()
-            .iter()
-            .zip(string.as_bytes())
-            .map(|x| (x.0 ^ x.1).count_ones() as usize)
-            .sum()
+        self.as_bytes().hamming_distance(string.as_bytes())
     }
 }
