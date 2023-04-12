@@ -77,8 +77,8 @@ fn tests() {
     );
 
     //Challenge 4
-    let lines = read_lines_from_file("4.txt");
-    let cipher = lines
+
+    let cipher = include_str!("4.txt")
         .lines()
         .min_by_key(|x| {
             let bytes = <[u8]>::from_hex(x);

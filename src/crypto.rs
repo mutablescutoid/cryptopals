@@ -11,9 +11,7 @@ pub const BASE64_TABLE: [char; 64] = [
     '5', '6', '7', '8', '9', '+', '/',
 ];
 
-pub const BASE64_TO_BINARY_TABLE: [u8; 256] = [
-    include!("BASE64_TO_BINARY_TABLE")
-];
+pub const BASE64_TO_BINARY_TABLE: [u8; 256] = [include!("base64_to_byte_table_gen.rs")];
 
 pub const BYTE_DIVISOR: i32 = 3;
 pub const BASE64_DIVISOR: usize = 4;
@@ -25,9 +23,8 @@ pub const HEX_TABLE: [char; 22] = [
     'D', 'E', 'F',
 ];
 
-pub const HEX_TO_BYTE_TABLE: [u8; u8::MAX as usize * u8::MAX as usize] = [
-    include!("HEX_TO_BYTE_TABLE")
-];
+pub const HEX_TO_BYTE_TABLE: [u8; u8::MAX as usize * u8::MAX as usize] =
+    include!("hex_to_byte_table_gen.rs");
 
 //Crypto constants
 
