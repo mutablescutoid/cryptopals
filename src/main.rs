@@ -1,7 +1,7 @@
 mod cli;
 mod crypto;
 
-use std::collections::HashMap;
+//use std::collections::HashMap;
 
 use cli::stdio::{read_from_stdin, read_lines_from_file};
 use crypto::{bytes_ext::BytesExt, str_ext::StrExt};
@@ -37,9 +37,9 @@ fn main() {
     //repeating_xor_stdin();
 }
 
-fn hex_test() {
+/*fn hex_test() {
     (0..=u8::MAX)
-}
+}*/
 
 fn repeating_xor_stdin() {
     println!(
